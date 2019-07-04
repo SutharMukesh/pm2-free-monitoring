@@ -4,8 +4,6 @@ const Influx = require('influx');
 const influxModel = new Influx.InfluxDB({
     host: process.env.DB_HOST,
     port: process.env.DB_PORT,
-    username: process.env.DB_USER,
-    password: process.env.DB_PASS,
     database: process.env.DB_NAME,
     schema: [
       {
@@ -14,7 +12,8 @@ const influxModel = new Influx.InfluxDB({
           NAME:Influx.FieldType.STRING,
           CPU:Influx.FieldType.FLOAT,
           MEM:Influx.FieldType.FLOAT,
-          PROCESS_ID: Influx.FieldType.INTEGER
+          PROCESS_ID: Influx.FieldType.INTEGER,
+          STATUS: Influx.FieldType.FLOAT
         },
         tags: [
           'host'

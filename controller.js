@@ -22,7 +22,8 @@ module.exports.indentify_node_process = cron.schedule('*/10 * * * * *', function
           "NAME": process.name || null,
           "CPU": process.monit.cpu || 0,
           "MEM": process.monit.memory || 0,
-          "PROCESS_ID": process.pid || 0
+          "PROCESS_ID": process.pid || 0,
+          "STATUS": (process.pm2_env.status == "online") ? 1 : 0
         };
         callback(null, influx_input);
       } else {
